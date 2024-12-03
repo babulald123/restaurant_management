@@ -1,4 +1,4 @@
-class CreateRestaurants < ActiveRecord::Migration[<%= migration_version %>
+class CreateRestaurants < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :restaurants do |t|
       t.string :name
