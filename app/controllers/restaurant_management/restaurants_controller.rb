@@ -3,8 +3,8 @@ module RestaurantManagement
     before_action :set_restaurant, only: [:show, :update, :destroy]
 
     def index
-      @restaurants = Restaurant.all
-      render json: RestaurantSerializer.new(@restaurants).serializable_hash
+      @restaurants = Restaurant.page(params[:page]).per(params[:per_page])
+      render json: RestaurantSerializer.new(@restaurants).serializable_hash.merge(page_meta(@restaurants))
     end
 
     def show
@@ -30,7 +30,7 @@ module RestaurantManagement
 
     def destroy
       @restaurant.destroy
-      head :no_content
+      render json: { success: "Restaurant deleted sucsessfully!" }, status: :ok
     end
 
     private

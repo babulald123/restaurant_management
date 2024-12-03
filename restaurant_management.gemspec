@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 7.2.2"
   spec.add_dependency 'fast_jsonapi'
+  spec.add_dependency 'kaminari'
 end
